@@ -12,7 +12,7 @@ const BAR_COLORS: Record<ArrayBar["state"], string> = {
 
 export function ArrayBars({ bars }: { bars: ArrayBar[] }) {
   return (
-    <div className="w-full h-[300px] sm:h-[380px] flex items-end gap-[2px]">
+    <div className="w-full h-75 sm:h-95 flex items-end gap-0.5">
       {bars.map((bar, i) => (
         <div
           key={i}

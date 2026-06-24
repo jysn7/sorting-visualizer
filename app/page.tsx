@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { Visualizer } from "@/components/visualizer/Visualizer"
 
 export default function Page() {

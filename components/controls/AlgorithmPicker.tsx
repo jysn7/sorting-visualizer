@@ -19,14 +19,12 @@ export function AlgorithmPicker({ value, onChange, disabled }: Props) {
   return (
     <Select value={value} onValueChange={onChange} disabled={disabled}>
       <SelectTrigger
-        className="w-full text-sm font-medium h-10 rounded border-0"
-        style={{ background: "var(--secondary)", color: "var(--foreground)" }}
+        className="w-full text-sm bg-secondary text-foreground font-medium h-10 rounded border-0"
       >
         <SelectValue />
       </SelectTrigger>
       <SelectContent
-        className="rounded border-0 shadow-2xl"
-        style={{ background: "var(--card)" }}
+        className="rounded border-0 bg-card shadow-2xl"
       >
         {Object.values(ALGORITHM_META).map((a) => (
           <SelectItem

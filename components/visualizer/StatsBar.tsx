@@ -1,30 +1,28 @@
 import { SortStep } from "@/lib/algorithms/types"
-import { StatCard } from "./StatCard";
 
 export function StatsBar({ step, progress }: { step: SortStep; progress?: number }) {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-3">
-        <StatCard label="Comparisons" value={step.comparisons} />
-        <StatCard label="Swaps" value={step.swaps} />
-      </div>
+    <div className="flex flex-col gap-2 p-1">
       {progress !== undefined && (
         <div className="flex flex-col gap-2">
-          <div className="flex justify-between items-center">
-            <span className="text-xs font-medium" style={{ color: "var(--muted-foreground)" }}>
-              Progress
-            </span>
-            <span className="text-xs font-semibold" style={{ color: "var(--primary)" }}>
+          <div className="flex justify-between items-end text-[11px] font-medium text-muted-foreground">
+            <div className="flex gap-3">
+              <span>
+                Ops: <span className="font-mono font-bold text-foreground">{step.comparisons + step.swaps}</span>
+              </span>
+              <span>•</span>
+              <span>
+                Swaps: <span className="font-mono font-bold text-foreground">{step.swaps}</span>
+              </span>
+            </div>
+            <span className="font-mono font-bold text-primary text-xs">
               {progress}%
             </span>
           </div>
-          <div
-            className="h-1.5 w-full rounded-full overflow-hidden"
-            style={{ background: "var(--muted)" }}
-          >
+          <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden">
             <div
-              className="h-full rounded-full transition-all duration-100"
-              style={{ width: `${progress}%`, background: "var(--primary)" }}
+              className="h-full rounded-full bg-primary transition-all duration-100"
+              style={{ width: `${progress}%` }}
             />
           </div>
         </div>

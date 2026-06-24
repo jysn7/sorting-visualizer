@@ -35,7 +35,6 @@
 }
 
 :root {
-  /* Core Gemini Dark Theme UI Colors */
   --background: #131314;
   --foreground: #e3e3e3;
   --card: #1e1e20;
@@ -51,10 +50,9 @@
   --input: #3c4043;
   --radius: 1rem;
 
-  /* Gemini Accent Identity Blends */
-  --primary: #7fcfff;             /* Soft Light Blue */
+  --primary: #7fcfff;
   --primary-foreground: #131314;
-  --accent: #d7baff;              /* Soft Lavender */
+  --accent: #d7baff;
   --accent-foreground: #131314;
   --ring: #7fcfff;
 

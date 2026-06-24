@@ -59,7 +59,7 @@ export function Visualizer() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative" style={{ background: "var(--background)" }}>
+    <div className="min-h-screen flex flex-col relative bg-background">
       <VisualizerHeader 
         view={view} 
         setView={setView} 
@@ -78,7 +78,7 @@ export function Visualizer() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-medium mb-0.5" style={{ color: "var(--muted-foreground)" }}>
+                    <p className="text-xs font-medium mb-0.5 text-muted-foreground">
                       Now sorting
                     </p>
                     <h2 className="text-base font-bold">{ALGORITHM_META[algorithmKey].name}</h2>
@@ -87,7 +87,7 @@ export function Visualizer() {
                     {LEGEND.map(({ state, label, color }) => (
                       <div key={state} className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
-                        <span className="text-xs font-medium" style={{ color: "var(--muted-foreground)" }}>
+                        <span className="text-xs font-medium text-muted-foreground">
                           {label}
                         </span>
                       </div>
@@ -101,13 +101,13 @@ export function Visualizer() {
           )}
 
           {view === "complexity" && (
-            <div className="rounded-3xl p-7 flex-1" style={{ background: "var(--card)" }}>
+            <div className="rounded-3xl p-7 flex-1 bg-card">
               <ComplexityView meta={ALGORITHM_META[algorithmKey]} />
             </div>
           )}
 
           {view === "implementation" && (
-            <div className="rounded-3xl p-7 flex-1 flex flex-col" style={{ background: "var(--card)" }}>
+            <div className="rounded-3xl p-7 flex-1 flex flex-col bg-card" >
               <ImplementationView meta={ALGORITHM_META[algorithmKey]} />
             </div>
           )}

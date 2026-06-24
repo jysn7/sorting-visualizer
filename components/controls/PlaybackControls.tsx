@@ -35,7 +35,7 @@ export function PlaybackControls({
 }: Props) {
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--muted-foreground)" }}>
+      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         Playback
       </p>
 

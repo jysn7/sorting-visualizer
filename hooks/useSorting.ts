@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState, useMemo } from "react"
 import { ArrayBar, SortStep } from "@/lib/algorithms/types"
-import { bubbleSort } from "@/lib/algorithms"
+import { bubbleSort, insertionSort, mergeSort } from "@/lib/algorithms"
 import { playSwapSound } from "@/lib/audio"
 
 const ALGORITHMS: Record<string, (input: ArrayBar[]) => SortStep[]> = {
   bubble: bubbleSort,
-  // add others here as you implement them
+  insertion: insertionSort,
+  merge: mergeSort,
 }
 
 export function useSorting(initialArray: ArrayBar[], algorithmKey: string) {

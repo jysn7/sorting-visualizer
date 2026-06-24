@@ -7,8 +7,7 @@ interface SideCardProps {
 export function SideCard({ children }: SideCardProps) {
   return (
     <div
-      className="rounded-lg p-5 flex flex-col gap-4"
-      style={{ background: "var(--card)" }}
+      className="rounded-lg p-5 flex bg-card flex-col gap-4"
     >
       {children}
     </div>

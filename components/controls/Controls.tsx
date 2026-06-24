@@ -53,7 +53,7 @@ export function Controls({
 
       {/* Algorithm picker */}
       <SideCard>
-        <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--muted-foreground)" }}>
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Algorithm
         </p>
         <AlgorithmPicker
