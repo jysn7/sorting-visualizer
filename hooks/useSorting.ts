@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useMemo } from "react"
 import { ArrayBar, SortStep } from "@/lib/algorithms/types"
 import { bubbleSort } from "@/lib/algorithms"
+import { playSwapSound } from "@/lib/audio"
 
 const ALGORITHMS: Record<string, (input: ArrayBar[]) => SortStep[]> = {
   bubble: bubbleSort,
@@ -25,6 +26,17 @@ export function useSorting(initialArray: ArrayBar[], algorithmKey: string) {
     setStepIndex(0)
     setIsPlaying(false)
   }, [steps])
+
+  // Trigger sound when the step index changes during active playback
+  useEffect(() => {
+    if (isPlaying && steps[stepIndex]) {
+      const currentStep = steps[stepIndex]
+      const swappingBar = currentStep.array.find(bar => bar.state === "swapping")
+      if (swappingBar) {
+        playSwapSound(swappingBar.value)
+      }
+    }
+  }, [stepIndex, isPlaying, steps])
 
   const isDone = stepIndex >= steps.length - 1
 
