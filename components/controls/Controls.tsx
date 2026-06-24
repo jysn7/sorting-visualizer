@@ -89,34 +89,18 @@ export function Controls({
       <button
         onClick={onRandomize}
         disabled={isPlaying}
-        className="w-full h-11 rounded-2xl text-sm font-semibold transition-opacity disabled:opacity-30 border"
-        style={{ borderColor: "var(--border)", color: "var(--foreground)", background: "transparent" }}
+        className="w-full h-11 rounded-2xl text-sm font-semibold  bg-transparent text-foreground border-border transition-all hover:bg-primary hover:text-card hover:border-0 cursor-pointer disabled:opacity-30 border duration-400"
       >
         Randomize array
       </button>
 
-      {/* Step counter */}
-      <SideCard>
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--muted-foreground)" }}>
-            Step
-          </span>
-          <span className="text-sm font-bold tabular-nums">
-            {stepIndex.toLocaleString()}
-            <span className="font-normal" style={{ color: "var(--muted-foreground)" }}>
-              {" "}/ {(totalSteps - 1).toLocaleString()}
-            </span>
-          </span>
-        </div>
-      </SideCard>
       {/* Socials */}
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center mt-2 justify-center gap-6">
           <a 
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--muted-foreground)" }}
+            className="transition-all hover:text-primary text-muted-foreground "
           >
             <FaGithub size={18} />
           </a>
@@ -124,8 +108,7 @@ export function Controls({
             href={linkedinUrl}
             target="_blank" 
             rel="noopener noreferrer" 
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--muted-foreground)" }}
+            className="transition-all duration-300 hover:text-primary "
           >
             <FaLinkedin size={18} />
           </a>
@@ -133,8 +116,7 @@ export function Controls({
             href={websiteUrl}
             target="_blank" 
             rel="noopener noreferrer" 
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--muted-foreground)" }}
+            className="transition-all hover:text-primary duration-300 text-muted-foreground"
           >
             <Globe size={18} />
           </a>

@@ -22,7 +22,6 @@ export function SpeedSlider({ value, onChange }: Props) {
         step={10}
         value={[value]}
         onValueChange={([v]) => onChange(v)}
-        inverted
       />
     </div>
   )
