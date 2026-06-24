@@ -9,11 +9,8 @@ import { ComplexityView } from "./ComplexityView"
 import { ImplementationView } from "./ImplementationView"
 import { Controls } from "@/components/controls/Controls"
 import { ALGORITHM_META } from "@/lib/algorithms/meta"
-import { FaQuestionCircle, FaTimes } from "react-icons/fa"
-import { AudioLines, AudioWaveform } from "lucide-react"
 import { HelpModal } from "./HelpModal"
-
-type ExtendedViewMode = "visualizer" | "complexity" | "implementation"
+import { VisualizerHeader, ExtendedViewMode } from "./VisualizerHeader"
 
 const LEGEND = [
   { state: "comparing", label: "Comparing",  color: "var(--color-comparing)" },
@@ -63,58 +60,15 @@ export function Visualizer() {
 
   return (
     <div className="min-h-screen flex flex-col relative" style={{ background: "var(--background)" }}>
+      <VisualizerHeader 
+        view={view} 
+        setView={setView} 
+        onHelpOpen={() => setIsHelpOpen(true)} 
+      />
 
-      {/* Header */}
-      <header className="px-6 sm:px-8 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2.5">
-            <div
-              className="w-7 h-7 rounded-lg flex items-center justify-center"
-              style={{ background: "var(--primary)" }}
-            >
-              <AudioWaveform className="h-3.5 w-3.5 text-primary-foreground" />
-            </div>
-            <span className="font-bold text-sm tracking-tight">Sorting Visualizer</span>
-          </div>
-        </div>
-        
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsHelpOpen(true)}
-            className="cursor-pointer text-muted-foreground transition-opacity hover:opacity-75"
-            aria-label="Help"
-          >
-            <FaQuestionCircle size={16} />
-          </button>
+      <HelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
 
-          <div
-            className="flex bg-card items-center gap-1 p-1 rounded-2xl"
-          >
-            
-            {(["visualizer", "complexity", "implementation"] as ExtendedViewMode[]).map((v) => (
-              <button
-                key={v}
-                onClick={() => setView(v)}
-                className="px-4 py-1.5 cursor-pointer hover:bg-background text-xs font-semibold rounded-xl capitalize transition-all"
-                style={
-                  view === v
-                    ? { background: "var(--primary)", color: "var(--primary-foreground)" }
-                    : { color: "var(--muted-foreground)" }
-                }
-              >
-                {v}
-              </button>
-            ))}
-          </div>
-        </div>
-      </header>
-
-      {/* Help Modal Overlay */}
-      {isHelpOpen && (
-        <HelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
-      )}
-
-      <div className="flex flex-col lg:flex-row flex-1 gap-4 px-6 sm:px-8 pb-8">
+      <div className="flex flex-col lg:flex-row flex-1 gap-4 px-4 sm:px-8 pb-8 pt-4">
         <main className="flex-1 flex flex-col gap-5">
           {view === "visualizer" && (
             <>
@@ -159,7 +113,6 @@ export function Visualizer() {
           )}
         </main>
 
-        {/* Sidebar */}
         <Controls
           algorithmKey={algorithmKey}
           onAlgorithmChange={handleAlgorithmChange}
