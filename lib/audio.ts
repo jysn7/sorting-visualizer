@@ -11,27 +11,31 @@ export function playSwapSound(value: number, maxBarValue: number = 200) {
   try {
     const ctx = getAudioContext()
     
-    // Create nodes
+    // Resume context if suspended by browser autoplay policies
+    if (ctx.state === "suspended") {
+      ctx.resume()
+    }
+
     const oscillator = ctx.createOscillator()
     const gainNode = ctx.createGain()
 
     oscillator.connect(gainNode)
     gainNode.connect(ctx.destination)
 
-    // Map the bar's value to a frequency pitch (e.g., between 200Hz and 800Hz)
+    // Linear mapping calculation
     const minFreq = 200
     const maxFreq = 800
     const frequency = minFreq + (value / maxBarValue) * (maxFreq - minFreq)
 
-    oscillator.type = "sine" // A clean, soft tone
+    oscillator.type = "sine"
     oscillator.frequency.setValueAtTime(frequency, ctx.currentTime)
 
-    // Fast volume envelope to avoid clicking sounds
-    gainNode.gain.setValueAtTime(0.05, ctx.currentTime) // Low volume
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04) // Fast fade out
+    // Volume configuration
+    gainNode.gain.setValueAtTime(0.05, ctx.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04)
 
     oscillator.start(ctx.currentTime)
-    oscillator.stop(ctx.currentTime + 0.04) // 40ms duration
+    oscillator.stop(ctx.currentTime + 0.04)
   } catch (e) {
     console.error("Audio playback failed", e)
   }
