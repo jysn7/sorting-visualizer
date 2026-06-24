@@ -18,7 +18,7 @@ An interactive sorting algorithm visualizer built with Next.js, Tailwind CSS, an
 ## Setup
 
 ```bash
-git clone https://github.com/your-username/sorting-visualizer.git
+git clone https://github.com/jysn7/sorting-visualizer.git
 cd sorting-visualizer
 npm install
 npm run dev
