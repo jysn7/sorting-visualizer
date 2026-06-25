@@ -73,8 +73,7 @@ export function Visualizer() {
           {view === "visualizer" && (
             <>
               <div
-                className="rounded-lg p-6 flex flex-col gap-5"
-                style={{ background: "var(--card)" }}
+                className="rounded-lg p-6 bg-card flex flex-col gap-5"
               >
                 <div className="flex items-center justify-between">
                   <div>

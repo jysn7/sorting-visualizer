@@ -1,14 +1,7 @@
 "use client"
 
+import { Play, Pause, ChevronLeft, ChevronRight, RotateCcw, Check } from "lucide-react"
 import { ControlButton } from "./ControlButton"
-
-interface IconButtonProps {
-  onClick: () => void
-  disabled?: boolean
-  children: React.ReactNode
-  accent?: boolean
-  ghost?: boolean
-}
 
 interface Props {
   isPlaying: boolean
@@ -44,7 +37,24 @@ export function PlaybackControls({
         disabled={isDone}
         accent
       >
-        {isPlaying ? "Pause" : isDone ? "Done" : "▶  Play"}
+        <div className="flex items-center justify-center gap-2 w-full">
+          {isPlaying ? (
+            <>
+              <Pause className="h-4 w-4" />
+              <span>Pause</span>
+            </>
+          ) : isDone ? (
+            <>
+              <Check className="h-4 w-4" />
+              <span>Done</span>
+            </>
+          ) : (
+            <>
+              <Play className="h-4 w-4" />
+              <span>Play</span>
+            </>
+          )}
+        </div>
       </ControlButton>
 
       <div className="flex gap-2">
@@ -52,18 +62,27 @@ export function PlaybackControls({
           onClick={onStepBack}
           disabled={isPlaying || stepIndex === 0}
         >
-          ← Back
+          <div className="flex items-center justify-center gap-1 w-full">
+            <ChevronLeft className="h-4 w-4" />
+            <span>Back</span>
+          </div>
         </ControlButton>
         <ControlButton
           onClick={onStepForward}
           disabled={isPlaying || isDone}
         >
-          Next →
+          <div className="flex items-center justify-center gap-1 w-full">
+            <span>Next</span>
+            <ChevronRight className="h-4 w-4" />
+          </div>
         </ControlButton>
       </div>
 
       <ControlButton onClick={onReset} ghost>
-        Reset
+        <div className="flex items-center justify-center gap-2 w-full">
+          <RotateCcw className="h-4 w-4" />
+          <span>Reset</span>
+        </div>
       </ControlButton>
     </div>
   )
